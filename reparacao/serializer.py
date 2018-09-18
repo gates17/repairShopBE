@@ -15,6 +15,11 @@ class ReparacaoSerializer(serializers.ModelSerializer):
             'description',
             'date_created',
             'date_completed',
+            'tlf',
+            'budget' ,
+            'foto',
+            'price',
+            'materials'
         ]
         read_only_fields = ['id','date_created']
 
