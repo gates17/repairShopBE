@@ -1,0 +1,12 @@
+Instalar python 2.7 mysql
+Cria um virtualenv. depois de criar o virtual env fazes source virtualenv/bin/activate. uma vez dentro do venv fazes pip install -r "pasta do projecto"/requirements.txt para teres as dependencias do django instaladas.
+
+criar base de dados vazia no mysql.
+
+assim que tiveres as dependencias instaladas:
+abrir repairshop/settings.py e alterar as configurações da base de dados de acordo com os dados que colocaste na tua BD
+de volta a consola
+cd "pasta do projecto"
+./manage.py migrate (para criar as tabelas na BD)
+./manage.py runserver para correr o BE
+
