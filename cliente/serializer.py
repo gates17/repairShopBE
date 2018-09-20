@@ -1,37 +1,35 @@
 from rest_framework import serializers
 
-from .models import Reparacao
+from .models import Cliente
 
 from datetime import date
 
-class ReparacaoSerializer(serializers.ModelSerializer):
+class ClienteSerializer(serializers.ModelSerializer):
     url         = serializers.SerializerMethodField(read_only=True)
     class Meta:
-        model = Reparacao
+        model = Cliente
         fields = [
             'url',
             'id',
             'name',
-            'description',
+            'address',
             'date_created',
-            'date_completed',
             'tlf',
-            'budget' ,
-            'foto',
-            'price',
-            'materials'
+            'zip_code',
+            'localidade',
+            'total_spent_by_client'
         ]
-        read_only_fields = ['id','date_created']
+        read_only_fields = ['id','date_created','total_spent_by_client']
 
 
 
     def get_url(self, obj):
         # request
         request = self.context.get("request")
-        return obj.get_reparacao_url(request=request)
+        return obj.get_cliente_url(request=request)
 
     def validate_title(self, value):
-        qs = Reparacao.objects.filter(name__iexact=value)  # including instance
+        qs = Cliente.objects.filter(name__iexact=value)  # including instance
         if self.instance:
             qs = qs.exclude(id=self.instance.id)
         if qs.exists():

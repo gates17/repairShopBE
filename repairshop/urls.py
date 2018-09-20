@@ -16,13 +16,11 @@ Including another URLconf
 
 from django.conf.urls import include, url
 from django.contrib import admin
-from repaired import urls as repaired_urls
-from repairing import urls as repairing_urls
+from cliente import urls as cliente_urls
 from reparacao import urls as reparacao_urls
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^repaired/', include(repaired_urls, namespace='repaired')),
-    url(r'^repairing/', include(repairing_urls, namespace='repairing')),
+    url(r'^cliente/', include(cliente_urls, namespace='cliente')),
     url(r'^reparacao/', include(reparacao_urls, namespace='reparacao')),
 ]
