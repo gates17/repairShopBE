@@ -14,10 +14,12 @@ class Reparacao(models.Model):
     name = models.CharField(max_length=255, null=True, blank=True)
     description = models.TextField(max_length=1024, null=True, blank=True)
     date_created = models.DateField(auto_now_add=True)
-    date_completed = models.DateField(blank=True, null=True )
+    date_completed = models.DateField(blank=True, null=True)
     tlf = models.CharField(max_length=15, null=True, blank=True)
     budget= models.DecimalField(max_digits=10 ,decimal_places=2, default=Decimal('0.00'))
-    foto = models.ImageField(blank=True, null=True)
+    foto = models.CharField(max_length=255,blank=True, null=True)
+    #foto = models.ImageField(upload_to='images/', blank=True, null=True)
+
     price = models.DecimalField(max_digits=10, decimal_places=2, default=Decimal('0.00'))
     materials = models.TextField(null=True, blank=True)
 

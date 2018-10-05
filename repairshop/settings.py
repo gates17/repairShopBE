@@ -59,9 +59,18 @@ MIDDLEWARE = [
     #'corsheaders.middleware.CorsMiddleware',
 ]
 
+DEFAULT_PARSER_CLASSES = (
+    'rest_framework.parsers.JSONParser',
+    'rest_framework.parsers.FormParser',
+    'rest_framework.parsers.MultiPartParser',
+),
+
 ROOT_URLCONF = 'repairshop.urls'
 
 CORS_ORIGIN_ALLOW_ALL=True
+
+
+
 
 TEMPLATES = [
     {
@@ -147,3 +156,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+print os.path.join(BASE_DIR,'media')
+
+print os.path.join(BASE_DIR,'..','media')
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+MEDIA_URL = '/repairshopBE/media/'

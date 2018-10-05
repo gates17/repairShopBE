@@ -1,14 +1,21 @@
-from rest_framework import serializers
+from rest_framework.serializers import ModelSerializer,SerializerMethodField
 
 from .models import Reparacao
 
-from datetime import date
 
-class ReparacaoSerializer(serializers.ModelSerializer):
-    url         = serializers.SerializerMethodField(read_only=True)
+class ReparacaoListSerializer(ModelSerializer):
+    url = SerializerMethodField(read_only=True)
+
+
+    def get_url(self, obj):
+        # request
+        request = self.context.get("request")
+        print "URL"
+        return obj.get_reparacao_url(request=request) + "detail/" + str(obj.id)
+
     class Meta:
         model = Reparacao
-        fields = [
+        fields = (
             'url',
             'id',
             'name',
@@ -20,21 +27,115 @@ class ReparacaoSerializer(serializers.ModelSerializer):
             'foto',
             'price',
             'materials'
-        ]
+        )
         read_only_fields = ['id','date_created']
 
+class ReparacaoCreateSerializer(ModelSerializer):
+    url = SerializerMethodField(read_only=True)
 
 
     def get_url(self, obj):
         # request
         request = self.context.get("request")
-        return obj.get_reparacao_url(request=request)
+        return obj.get_reparacao_url(request=request) + "detail/" + str(obj.id)
 
-    def validate_title(self, value):
-        qs = Reparacao.objects.filter(name__iexact=value)  # including instance
-        if self.instance:
-            qs = qs.exclude(id=self.instance.id)
-        if qs.exists():
-            raise serializers.ValidationError("This name has already been used")
-        self.instance.date_created=date.now()
-        return value
+    class Meta:
+        model = Reparacao
+        fields = (
+            'url',
+            'id',
+            'name',
+            'description',
+            'date_created',
+            'date_completed',
+            'tlf',
+            'budget' ,
+            'foto',
+            'price',
+            'materials'
+        )
+        read_only_fields = ['id,','date_created']
+
+
+
+
+
+class ReparacaoDeleteSerializer(ModelSerializer):
+    url = SerializerMethodField(read_only=True)
+
+
+    def get_url(self, obj):
+        # request
+        request = self.context.get("request")
+        print "URL"
+        return obj.get_reparacao_url(request=request) + "detail/" + str(obj.id)
+
+    class Meta:
+        model = Reparacao
+        fields = (
+            'url',
+            'id',
+            'name',
+            'description',
+            'date_created',
+            'date_completed',
+            'tlf',
+            'budget' ,
+            'foto',
+            'price',
+            'materials'
+        )
+        read_only_fields = ['id','date_created']
+
+
+class ReparacaoUpdateSerializer(ModelSerializer):
+        url = SerializerMethodField(read_only=True)
+
+        def get_url(self, obj):
+            # request
+            request = self.context.get("request")
+            print "URL"
+            return obj.get_reparacao_url(request=request) + "detail/" + str(obj.id)
+
+        class Meta:
+            model = Reparacao
+            fields = (
+                'url',
+                'id',
+                'name',
+                'description',
+                'date_created',
+                'date_completed',
+                'tlf',
+                'budget',
+                'foto',
+                'price',
+                'materials'
+            )
+            read_only_fields = ['id', 'date_created']
+
+class ReparacaoDetailSerializer(ModelSerializer):
+    url = SerializerMethodField(read_only=True)
+
+    def get_url(self, obj):
+        # request
+        request = self.context.get("request")
+        print "URL"
+        return obj.get_reparacao_url(request=request) + "detail/" + str(obj.id)
+
+    class Meta:
+        model = Reparacao
+        fields = (
+            'url',
+            'id',
+            'name',
+            'description',
+            'date_created',
+            'date_completed',
+            'tlf',
+            'budget',
+            'foto',
+            'price',
+            'materials'
+        )
+        read_only_fields = ['id', 'date_created']

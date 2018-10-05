@@ -14,8 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 
-from django.conf.urls import include, url
+from django.conf import settings
 from django.contrib import admin
+from django.conf.urls import include, url
+from django.conf.urls.static import static
+
 from cliente import urls as cliente_urls
 from reparacao import urls as reparacao_urls
 
@@ -23,4 +26,13 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^cliente/', include(cliente_urls, namespace='cliente')),
     url(r'^reparacao/', include(reparacao_urls, namespace='reparacao')),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+"""
+ urlpatterns += patterns('',
+    (r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+    'document_root': settings.MEDIA_ROOT}))
+"""
+
+
