@@ -33,17 +33,22 @@ class ReparacaoListView(generics.ListAPIView):
     serializer_class = ReparacaoListSerializer
     lookup_field = 'id'
 
-
-    def get_queryset(self):
-        qs = Reparacao.objects.all();
+    def get_queryset(self, *args, **kwargs):
+        qs = Reparacao.objects.all()
         query = self.request.GET.get("q")
+        print query
         if query is not None:
             qs = qs.filter(
-                Q(name__icontains=query).distinct()
-            )
+                Q(name__icontains=query) |
+                Q(tlf__icontains=query)
+            ).distinct()
+            print qs
+            """
+            colocar datas
+            Q(name__icontains=query).distinct() |
+            Q(name__icontains=query).distinct() |
+            """
         return qs
-
-
 
 class ReparacaoUpdateView(generics.UpdateAPIView):
     lookup_field = 'id'
@@ -58,16 +63,12 @@ class ReparacaoUpdateView(generics.UpdateAPIView):
             )
         return qs
 
-
-
 class ReparacaoDetailView(generics.RetrieveAPIView):
     lookup_field = 'id'
     serializer_class = ReparacaoDetailSerializer
 
     def get_queryset(self):
         return Reparacao.objects.all();
-
-
 
 class ReparacaoDeleteView(generics.DestroyAPIView):
     lookup_field = 'id'

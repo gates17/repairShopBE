@@ -3,11 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="dca94de4-d318-44b8-9e2f-5e1dd2fa9606" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/repairshop/settings.py" afterPath="$PROJECT_DIR$/repairshop/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/repairshop/urls.py" afterPath="$PROJECT_DIR$/repairshop/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reparacao/admin.py" afterPath="$PROJECT_DIR$/reparacao/admin.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reparacao/models.py" afterPath="$PROJECT_DIR$/reparacao/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reparacao/serializer.py" afterPath="$PROJECT_DIR$/reparacao/serializer.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reparacao/urls.py" afterPath="$PROJECT_DIR$/reparacao/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reparacao/views.py" afterPath="$PROJECT_DIR$/reparacao/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,7 +20,7 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/repairshop/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
+            <state relative-caret-position="1278">
               <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
               <folding />
             </state>
@@ -44,30 +42,43 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/reparacao/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="25" column="32" lean-forward="false" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
+            <state relative-caret-position="143">
+              <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
               <folding>
                 <element signature="e#24#63#0" expanded="true" />
-                <element signature="e#1148#1466#0" expanded="false" />
-                <element signature="e#1525#1844#0" expanded="false" />
-                <element signature="e#1905#2042#0" expanded="false" />
-                <element signature="e#2102#2239#0" expanded="false" />
+                <element signature="e#324#1095#0" expanded="false" />
+                <element signature="e#1779#2098#0" expanded="false" />
+                <element signature="e#2157#2294#0" expanded="false" />
+                <element signature="e#2352#2489#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="serializer.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="serializer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/reparacao/serializer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="503">
-              <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+            <state relative-caret-position="72">
+              <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
               <folding>
                 <element signature="e#0#76#0" expanded="true" />
                 <element signature="e#162#769#0" expanded="false" />
-                <element signature="e#1473#2080#0" expanded="false" />
-                <element signature="e#2141#2831#0" expanded="false" />
-                <element signature="e#2887#3493#0" expanded="false" />
+                <element signature="e#825#1413#0" expanded="false" />
+                <element signature="e#1469#2076#0" expanded="false" />
+                <element signature="e#2136#2826#0" expanded="false" />
+                <element signature="e#2882#3488#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/reparacao/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -76,7 +87,7 @@
       <file leaf-file-name="serializers.py" pinned="false" current-in-tab="false">
         <entry file="file:///usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
+            <state relative-caret-position="15246">
               <caret line="904" column="14" lean-forward="false" selection-start-line="904" selection-start-column="4" selection-end-line="904" selection-end-column="14" />
               <folding>
                 <element signature="e#37091#37818#0" expanded="false" />
@@ -105,8 +116,8 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/reparacao/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="16" column="59" lean-forward="false" selection-start-line="16" selection-start-column="59" selection-end-line="16" selection-end-column="59" />
+            <state relative-caret-position="324">
+              <caret line="18" column="46" lean-forward="false" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
               <folding>
                 <element signature="e#24#63#0" expanded="true" />
               </folding>
@@ -117,7 +128,7 @@
       <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
         <entry file="file:///usr/local/lib/python2.7/dist-packages/django/db/models/fields/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
+            <state relative-caret-position="22392">
               <caret line="1283" column="23" lean-forward="false" selection-start-line="1283" selection-start-column="20" selection-end-line="1283" selection-end-column="23" />
               <folding>
                 <element signature="e#49317#55789#0" expanded="false" />
@@ -187,7 +198,6 @@
         <option value="$PROJECT_DIR$/repairing/serializer.py" />
         <option value="$PROJECT_DIR$/repaired/views.py" />
         <option value="$PROJECT_DIR$/repairing/views.py" />
-        <option value="$PROJECT_DIR$/reparacao/urls.py" />
         <option value="$PROJECT_DIR$/cliente/models.py" />
         <option value="$PROJECT_DIR$/cliente/serializer.py" />
         <option value="$PROJECT_DIR$/cliente/urls.py" />
@@ -198,6 +208,7 @@
         <option value="$PROJECT_DIR$/reparacao/models.py" />
         <option value="$PROJECT_DIR$/reparacao/views.py" />
         <option value="$PROJECT_DIR$/reparacao/serializer.py" />
+        <option value="$PROJECT_DIR$/reparacao/urls.py" />
       </list>
     </option>
   </component>
@@ -223,7 +234,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -234,17 +244,7 @@
             <path>
               <item name="repairshop" type="b2602c69:ProjectViewProjectNode" />
               <item name="repairshop" type="462c0819:PsiDirectoryNode" />
-              <item name="cliente" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="repairshop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="repairshop" type="462c0819:PsiDirectoryNode" />
               <item name="media" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="repairshop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="repairshop" type="462c0819:PsiDirectoryNode" />
-              <item name="repairshop" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="repairshop" type="b2602c69:ProjectViewProjectNode" />
@@ -255,6 +255,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -292,10 +293,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="24" width="1855" height="959" extended-state="6" />
+    <frame x="75" y="89" width="1855" height="959" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26589274" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2692095" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -343,7 +344,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/reparacao/views.py</url>
-          <line>47</line>
+          <line>52</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -410,10 +411,10 @@
           <caret line="26" column="17" lean-forward="false" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
           <folding>
             <element signature="e#24#63#0" expanded="true" />
-            <element signature="e#1148#1466#0" expanded="false" />
-            <element signature="e#1525#1844#0" expanded="false" />
-            <element signature="e#1905#2042#0" expanded="false" />
-            <element signature="e#2102#2239#0" expanded="false" />
+            <element signature="e#324#1095#0" expanded="false" />
+            <element signature="e#1779#2098#0" expanded="false" />
+            <element signature="e#2157#2294#0" expanded="false" />
+            <element signature="e#2352#2489#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -435,9 +436,10 @@
           <folding>
             <element signature="e#0#76#0" expanded="true" />
             <element signature="e#162#769#0" expanded="false" />
-            <element signature="e#1473#2080#0" expanded="false" />
-            <element signature="e#2141#2831#0" expanded="false" />
-            <element signature="e#2887#3493#0" expanded="false" />
+            <element signature="e#825#1413#0" expanded="false" />
+            <element signature="e#1469#2076#0" expanded="false" />
+            <element signature="e#2136#2826#0" expanded="false" />
+            <element signature="e#2882#3488#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -457,9 +459,10 @@
           <folding>
             <element signature="e#0#76#0" expanded="true" />
             <element signature="e#162#769#0" expanded="false" />
-            <element signature="e#1473#2080#0" expanded="false" />
-            <element signature="e#2141#2831#0" expanded="false" />
-            <element signature="e#2887#3493#0" expanded="false" />
+            <element signature="e#825#1413#0" expanded="false" />
+            <element signature="e#1469#2076#0" expanded="false" />
+            <element signature="e#2136#2826#0" expanded="false" />
+            <element signature="e#2882#3488#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -470,10 +473,10 @@
           <caret line="10" column="38" lean-forward="false" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
           <folding>
             <element signature="e#24#63#0" expanded="true" />
-            <element signature="e#1148#1466#0" expanded="false" />
-            <element signature="e#1525#1844#0" expanded="false" />
-            <element signature="e#1905#2042#0" expanded="false" />
-            <element signature="e#2102#2239#0" expanded="false" />
+            <element signature="e#324#1095#0" expanded="false" />
+            <element signature="e#1779#2098#0" expanded="false" />
+            <element signature="e#2157#2294#0" expanded="false" />
+            <element signature="e#2352#2489#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -585,27 +588,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/reparacao/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cliente/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
           <caret line="1" column="61" lean-forward="false" selection-start-line="1" selection-start-column="61" selection-end-line="1" selection-end-column="61" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/repairshop/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="1278">
           <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
           <folding />
         </state>
@@ -615,7 +607,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="23" column="18" lean-forward="true" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -651,17 +642,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding>
-            <element signature="e#24#63#0" expanded="true" />
-            <element signature="e#389#699#0" expanded="false" />
-            <element signature="e#756#1065#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file:///usr/local/lib/python2.7/dist-packages/django/db/models/fields/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
+        <state relative-caret-position="22392">
           <caret line="1283" column="23" lean-forward="false" selection-start-line="1283" selection-start-column="20" selection-end-line="1283" selection-end-column="23" />
           <folding>
             <element signature="e#49317#55789#0" expanded="false" />
@@ -671,7 +657,7 @@
     </entry>
     <entry file="file:///usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
+        <state relative-caret-position="15246">
           <caret line="904" column="14" lean-forward="false" selection-start-line="904" selection-start-column="4" selection-end-line="904" selection-end-column="14" />
           <folding>
             <element signature="e#37091#37818#0" expanded="false" />
@@ -680,16 +666,6 @@
             <element signature="e#44750#45067#0" expanded="false" />
             <element signature="e#45202#46081#0" expanded="false" />
             <element signature="e#46152#48557#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/reparacao/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="59" lean-forward="false" selection-start-line="16" selection-start-column="59" selection-end-line="16" selection-end-column="59" />
-          <folding>
-            <element signature="e#24#63#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -704,30 +680,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/reparacao/views.py">
+    <entry file="file://$PROJECT_DIR$/reparacao/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="25" column="32" lean-forward="false" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
+        <state relative-caret-position="324">
+          <caret line="18" column="46" lean-forward="false" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
           <folding>
             <element signature="e#24#63#0" expanded="true" />
-            <element signature="e#1148#1466#0" expanded="false" />
-            <element signature="e#1525#1844#0" expanded="false" />
-            <element signature="e#1905#2042#0" expanded="false" />
-            <element signature="e#2102#2239#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reparacao/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding>
+            <element signature="e#24#63#0" expanded="true" />
+            <element signature="e#324#1095#0" expanded="false" />
+            <element signature="e#1779#2098#0" expanded="false" />
+            <element signature="e#2157#2294#0" expanded="false" />
+            <element signature="e#2352#2489#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/reparacao/serializer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="503">
-          <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+        <state relative-caret-position="72">
+          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding>
             <element signature="e#0#76#0" expanded="true" />
             <element signature="e#162#769#0" expanded="false" />
-            <element signature="e#1473#2080#0" expanded="false" />
-            <element signature="e#2141#2831#0" expanded="false" />
-            <element signature="e#2887#3493#0" expanded="false" />
+            <element signature="e#825#1413#0" expanded="false" />
+            <element signature="e#1469#2076#0" expanded="false" />
+            <element signature="e#2136#2826#0" expanded="false" />
+            <element signature="e#2882#3488#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reparacao/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
           </folding>
         </state>
       </provider>

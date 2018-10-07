@@ -56,10 +56,6 @@ class ReparacaoCreateSerializer(ModelSerializer):
         )
         read_only_fields = ['id,','date_created']
 
-
-
-
-
 class ReparacaoDeleteSerializer(ModelSerializer):
     url = SerializerMethodField(read_only=True)
 
@@ -86,7 +82,6 @@ class ReparacaoDeleteSerializer(ModelSerializer):
             'materials'
         )
         read_only_fields = ['id','date_created']
-
 
 class ReparacaoUpdateSerializer(ModelSerializer):
         url = SerializerMethodField(read_only=True)

@@ -1,7 +1,6 @@
 from django.conf.urls import url
 from rest_framework.urlpatterns import format_suffix_patterns
-from .views import ReparacaoCreateView, ReparacaoDeleteView, ReparacaoDetailView, ReparacaoListView, ReparacaoUpdateView
-
+from .views import *
 #from django.contrib import admin
 
 urlpatterns = [
