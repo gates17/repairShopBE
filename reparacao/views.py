@@ -6,8 +6,14 @@ from .models import Reparacao
 from .serializer import *
 from django.db.models import Q
 
+from django.core.paginator import Paginator
+
+
 from rest_framework import status
 from rest_framework.response import Response
+from .pagination import PostPageNumberPagination #PostLimitOffSetPagination
+
+from rest_framework.pagination import  PageNumberPagination
 
 class ReparacaoCreateView(generics.CreateAPIView):
     model = Reparacao
@@ -32,22 +38,27 @@ class ReparacaoCreateView(generics.CreateAPIView):
 class ReparacaoListView(generics.ListAPIView):
     serializer_class = ReparacaoListSerializer
     lookup_field = 'id'
+    pagination_class =  PostPageNumberPagination
 
     def get_queryset(self, *args, **kwargs):
         qs = Reparacao.objects.all()
         query = self.request.GET.get("q")
-        print query
+
+
         if query is not None:
             qs = qs.filter(
                 Q(name__icontains=query) |
-                Q(tlf__icontains=query)
+                Q(tlf__icontains=query) |
+                Q(date_created__gte=query)
             ).distinct()
-            print qs
+            print qs ,"49"
             """
             colocar datas
             Q(name__icontains=query).distinct() |
             Q(name__icontains=query).distinct() |
             """
+            # print page_list
+        #return paginator.get_paginated_response(serializer.data)
         return qs
 
 class ReparacaoUpdateView(generics.UpdateAPIView):
