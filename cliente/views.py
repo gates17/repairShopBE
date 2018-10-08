@@ -5,16 +5,17 @@ from django.shortcuts import render
 from .models import Cliente
 from .serializer import ClienteSerializer
 from django.db.models import Q
+from rest_framework.response import Response
+from .pagination import PostPageNumberPagination #PostLimitOffSetPagination
 
 
 class ClienteCreateView(generics.CreateAPIView):
     serializer_class = ClienteSerializer
 
-
-
 class ClienteListView(generics.ListAPIView):
     serializer_class = ClienteSerializer
     lookup_field = 'id'
+    pagination_class =  PostPageNumberPagination
 
 
     def get_queryset(self):
@@ -25,8 +26,6 @@ class ClienteListView(generics.ListAPIView):
                 Q(name__icontains=query).distinct()
             )
         return qs
-
-
 
 class ClienteUpdateView(generics.UpdateAPIView):
     lookup_field = 'id'
@@ -41,16 +40,12 @@ class ClienteUpdateView(generics.UpdateAPIView):
             )
         return qs
 
-
-
 class ClienteDetailView(generics.RetrieveAPIView):
     lookup_field = 'id'
     serializer_class = ClienteSerializer
 
     def get_queryset(self):
         return Cliente.objects.all();
-
-
 
 class ClienteDeleteView(generics.DestroyAPIView):
     lookup_field = 'id'

@@ -26,7 +26,8 @@ class ReparacaoListSerializer(ModelSerializer):
             'budget' ,
             'foto',
             'price',
-            'materials'
+            'materials',
+            'faturado'
         )
         read_only_fields = ['id','date_created']
 
@@ -52,7 +53,9 @@ class ReparacaoCreateSerializer(ModelSerializer):
             'budget' ,
             'foto',
             'price',
-            'materials'
+            'materials',
+            'faturado'
+
         )
         read_only_fields = ['id,','date_created']
 
@@ -79,7 +82,9 @@ class ReparacaoDeleteSerializer(ModelSerializer):
             'budget' ,
             'foto',
             'price',
-            'materials'
+            'materials',
+            'faturado'
+
         )
         read_only_fields = ['id','date_created']
 
@@ -105,7 +110,9 @@ class ReparacaoUpdateSerializer(ModelSerializer):
                 'budget',
                 'foto',
                 'price',
-                'materials'
+                'materials',
+            'faturado'
+
             )
             read_only_fields = ['id', 'date_created']
 
@@ -131,6 +138,8 @@ class ReparacaoDetailSerializer(ModelSerializer):
             'budget',
             'foto',
             'price',
-            'materials'
+            'materials',
+            'faturado'
+
         )
         read_only_fields = ['id', 'date_created']

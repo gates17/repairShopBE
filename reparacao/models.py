@@ -20,7 +20,7 @@ class Reparacao(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2, default=Decimal('0.00'))
     materials = models.TextField(null=True, blank=True)
 
-    #faturado= models.BooleanField(default=False)
+    faturado= models.BooleanField(default=False)
     foto = models.CharField(max_length=255,blank=True, null=True)
     #foto = models.ImageField(upload_to='images/', blank=True, null=True)
 

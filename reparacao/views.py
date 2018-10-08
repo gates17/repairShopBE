@@ -22,14 +22,14 @@ class ReparacaoCreateView(generics.CreateAPIView):
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
-        print request.data
-        print request.data['date_completed']
         if not request.data['date_completed'] or request.data['date_completed']=='':
             request.data['date_completed']=None
         if not request.data['price']:
             request.data['price']=0
         if not request.data['budget']:
             request.data['budget']=0
+        print "POST"
+        print request.data['faturado']
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
@@ -51,7 +51,7 @@ class ReparacaoListView(generics.ListAPIView):
                 Q(tlf__icontains=query) |
                 Q(date_created__gte=query)
             ).distinct()
-            print qs ,"49"
+
             """
             colocar datas
             Q(name__icontains=query).distinct() |
