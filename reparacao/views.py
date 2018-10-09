@@ -41,15 +41,35 @@ class ReparacaoListView(generics.ListAPIView):
     pagination_class =  PostPageNumberPagination
 
     def get_queryset(self, *args, **kwargs):
-        qs = Reparacao.objects.all()
+        qs = Reparacao.objects.all().filter(faturado=False)
         query = self.request.GET.get("q")
-
-
+        dateStartQuery = self.request.GET.get("qdi")
+        dateFinishQuery = self.request.GET.get("qdf")
+        print dateStartQuery, dateFinishQuery
+        if dateStartQuery:
+            qs = qs.filter(
+                Q(date_created__gte=dateStartQuery)
+                #Q(date_completed__gte=dateStartQuery) |
+                #Q(date_created__lte=dateFinishQuery) |
+                #Q(date_completed__lte=dateFinishQuery)
+            ).distinct()
+        if dateFinishQuery:
+            qs = qs.filter(
+                #Q(date_created__gte=dateStartQuery) |
+                #Q(date_completed__gte=dateStartQuery) |
+                #Q(date_created__lte=dateFinishQuery) |
+                Q(date_completed__lte=dateFinishQuery)
+            ).distinct()
+        if dateFinishQuery and dateStartQuery:
+            qs = qs.filter(
+                (Q(date_created__gte=dateStartQuery), Q(date_completed__lte=dateFinishQuery))
+            ).distinct()
         if query is not None:
             qs = qs.filter(
                 Q(name__icontains=query) |
                 Q(tlf__icontains=query) |
-                Q(date_created__gte=query)
+                Q(date_created=query) |
+                Q(date_completed=query)
             ).distinct()
 
             """
@@ -59,6 +79,7 @@ class ReparacaoListView(generics.ListAPIView):
             """
             # print page_list
         #return paginator.get_paginated_response(serializer.data)
+        print qs.query
         return qs
 
 class ReparacaoUpdateView(generics.UpdateAPIView):
