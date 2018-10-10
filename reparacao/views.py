@@ -45,7 +45,8 @@ class ReparacaoListView(generics.ListAPIView):
         query = self.request.GET.get("q")
         dateStartQuery = self.request.GET.get("qdi")
         dateFinishQuery = self.request.GET.get("qdf")
-        print dateStartQuery, dateFinishQuery
+
+        print dateStartQuery, dateFinishQuery,query
         if dateStartQuery:
             qs = qs.filter(
                 Q(date_created__gte=dateStartQuery)
@@ -62,21 +63,16 @@ class ReparacaoListView(generics.ListAPIView):
             ).distinct()
         if dateFinishQuery and dateStartQuery:
             qs = qs.filter(
-                (Q(date_created__gte=dateStartQuery), Q(date_completed__lte=dateFinishQuery))
+                (Q(date_created__gte=dateStartQuery)& Q(date_completed__lte=dateFinishQuery))
             ).distinct()
         if query is not None:
             qs = qs.filter(
                 Q(name__icontains=query) |
-                Q(tlf__icontains=query) |
-                Q(date_created=query) |
-                Q(date_completed=query)
+                Q(tlf=query)
+
             ).distinct()
 
-            """
-            colocar datas
-            Q(name__icontains=query).distinct() |
-            Q(name__icontains=query).distinct() |
-            """
+
             # print page_list
         #return paginator.get_paginated_response(serializer.data)
         print qs.query
