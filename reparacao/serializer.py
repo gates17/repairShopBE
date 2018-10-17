@@ -5,11 +5,10 @@ from .models import Reparacao, Cliente
 
 class ReparacaoListSerializer(ModelSerializer):
     url = SerializerMethodField(read_only=True)
-    nome2 = SlugRelatedField(read_only=True,slug_field="name" )
+    name_id = SlugRelatedField(read_only=True,slug_field="name" )
     def get_url(self, obj):
         # request
         request = self.context.get("request")
-        print "URL"
         return obj.get_reparacao_url(request=request) + "detail/" + str(obj.id)
 
     class Meta:
@@ -17,8 +16,7 @@ class ReparacaoListSerializer(ModelSerializer):
         fields = (
             'url',
             'id',
-            'name',
-            'nome2',
+            'name_id',
             'description',
             'date_created',
             'date_completed',
@@ -27,7 +25,9 @@ class ReparacaoListSerializer(ModelSerializer):
             'foto',
             'price',
             'materials',
-            'faturado'
+            'faturado',
+            'pago'
+
         )
         read_only_fields = ['id','date_created']
 
@@ -44,8 +44,7 @@ class ReparacaoCreateSerializer(ModelSerializer):
         fields = (
             'url',
             'id',
-            'name',
-            'nome2',
+            'name_id',
             'description',
             'date_created',
             'date_completed',
@@ -54,7 +53,8 @@ class ReparacaoCreateSerializer(ModelSerializer):
             'foto',
             'price',
             'materials',
-            'faturado'
+            'faturado',
+            'pago'
 
         )
         read_only_fields = ['id,','date_created']
@@ -66,7 +66,6 @@ class ReparacaoDeleteSerializer(ModelSerializer):
     def get_url(self, obj):
         # request
         request = self.context.get("request")
-        print "URL"
         return obj.get_reparacao_url(request=request) + "detail/" + str(obj.id)
 
     class Meta:
@@ -74,8 +73,7 @@ class ReparacaoDeleteSerializer(ModelSerializer):
         fields = (
             'url',
             'id',
-            'name',
-            'nome2',
+            'name_id',
             'description',
             'date_created',
             'date_completed',
@@ -84,7 +82,8 @@ class ReparacaoDeleteSerializer(ModelSerializer):
             'foto',
             'price',
             'materials',
-            'faturado'
+            'faturado',
+            'pago'
 
         )
         read_only_fields = ['id','date_created']
@@ -95,7 +94,6 @@ class ReparacaoUpdateSerializer(ModelSerializer):
         def get_url(self, obj):
             # request
             request = self.context.get("request")
-            print "URL"
             return obj.get_reparacao_url(request=request) + "detail/" + str(obj.id)
 
         class Meta:
@@ -103,8 +101,7 @@ class ReparacaoUpdateSerializer(ModelSerializer):
             fields = (
                 'url',
                 'id',
-                'name',
-                'nome2',
+                'name_id',
                 'description',
                 'date_created',
                 'date_completed',
@@ -113,18 +110,20 @@ class ReparacaoUpdateSerializer(ModelSerializer):
                 'foto',
                 'price',
                 'materials',
-            'faturado'
+                'faturado',
+                'pago'
+
 
             )
             read_only_fields = ['id', 'date_created']
 
 class ReparacaoDetailSerializer(ModelSerializer):
     url = SerializerMethodField(read_only=True)
+    name_id = SlugRelatedField(read_only=True,slug_field="name" )
 
     def get_url(self, obj):
         # request
         request = self.context.get("request")
-        print "URL"
         return obj.get_reparacao_url(request=request) + "detail/" + str(obj.id)
 
     class Meta:
@@ -132,8 +131,7 @@ class ReparacaoDetailSerializer(ModelSerializer):
         fields = (
             'url',
             'id',
-            'name',
-            'nome2',
+            'name_id',
             'description',
             'date_created',
             'date_completed',
@@ -142,7 +140,8 @@ class ReparacaoDetailSerializer(ModelSerializer):
             'foto',
             'price',
             'materials',
-            'faturado'
+            'faturado',
+            'pago'
 
         )
         read_only_fields = ['id', 'date_created']

@@ -41,11 +41,12 @@ class ReparacaoListView(generics.ListAPIView):
     pagination_class =  PostPageNumberPagination
 
     def get_queryset(self, *args, **kwargs):
-        qs = Reparacao.objects.all().filter(faturado=False).select_related('nome2')
+        print "QUERYSET"
+        qs = Reparacao.objects.all().filter(faturado=False).select_related('name_id')
         query = self.request.GET.get("q")
         dateStartQuery = self.request.GET.get("qdi")
         dateFinishQuery = self.request.GET.get("qdf")
-
+        clientRelatedQuery = self.request.GET.get("qc")
         print dateStartQuery, dateFinishQuery,query
         if dateStartQuery:
             qs = qs.filter(
@@ -65,6 +66,9 @@ class ReparacaoListView(generics.ListAPIView):
             qs = qs.filter(
                 (Q(date_created__gte=dateStartQuery)& Q(date_completed__lte=dateFinishQuery))
             ).distinct()
+        if clientRelatedQuery:
+            qs = qs.filter(name_id=clientRelatedQuery)
+            print qs
         if query is not None:
             qs = qs.filter(
                 Q(name__icontains=query) |
@@ -83,12 +87,12 @@ class ReparacaoUpdateView(generics.UpdateAPIView):
     serializer_class = ReparacaoUpdateSerializer
 
     def get_queryset(self):
-        qs = Reparacao.objects.all();
+        qs = Reparacao.objects.all().select_related('name_id');
         query = self.request.GET.get("q")
         if query is not None:
             qs = qs.filter(
                 Q(name__icontains=query).distinct()
-            )
+            ).select_related('name_id')
         return qs
 
 class ReparacaoDetailView(generics.RetrieveAPIView):
@@ -96,13 +100,13 @@ class ReparacaoDetailView(generics.RetrieveAPIView):
     serializer_class = ReparacaoDetailSerializer
 
     def get_queryset(self):
-        return Reparacao.objects.all();
+        return Reparacao.objects.all().select_related('name_id');
 
 class ReparacaoDeleteView(generics.DestroyAPIView):
     lookup_field = 'id'
     serializer_class = ReparacaoDeleteSerializer
 
     def get_queryset(self):
-        return Reparacao.objects.all();
+        return Reparacao.objects.all().select_related('name_id');
 
 

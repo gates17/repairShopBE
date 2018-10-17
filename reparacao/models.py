@@ -12,8 +12,7 @@ from cliente.models import Cliente
 
 class Reparacao(models.Model):
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=255, null=True, blank=True)
-    nome2 = models.ForeignKey(Cliente, default=None, on_delete=models.CASCADE)
+    name_id = models.ForeignKey(Cliente, null=True, blank=True, on_delete=models.CASCADE)
     description = models.TextField(max_length=1024, null=True, blank=True)
     date_created = models.DateField(auto_now_add=True)
     date_completed = models.DateField(blank=True, null=True)
@@ -21,6 +20,7 @@ class Reparacao(models.Model):
     budget= models.DecimalField(max_digits=10 ,decimal_places=2, default=Decimal('0.00'))
     price = models.DecimalField(max_digits=10, decimal_places=2, default=Decimal('0.00'))
     materials = models.TextField(null=True, blank=True)
+    pago= models.BooleanField(default=False)
 
     faturado= models.BooleanField(default=False)
     foto = models.CharField(max_length=255,blank=True, null=True)
