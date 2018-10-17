@@ -1,12 +1,11 @@
-from rest_framework.serializers import ModelSerializer,SerializerMethodField
+from rest_framework.serializers import ModelSerializer,SerializerMethodField,SlugRelatedField
 
-from .models import Reparacao
+from .models import Reparacao, Cliente
 
 
 class ReparacaoListSerializer(ModelSerializer):
     url = SerializerMethodField(read_only=True)
-
-
+    nome2 = SlugRelatedField(read_only=True,slug_field="name" )
     def get_url(self, obj):
         # request
         request = self.context.get("request")
@@ -19,10 +18,11 @@ class ReparacaoListSerializer(ModelSerializer):
             'url',
             'id',
             'name',
+            'nome2',
             'description',
             'date_created',
             'date_completed',
-            'tlf',
+            'weight',
             'budget' ,
             'foto',
             'price',
@@ -33,7 +33,6 @@ class ReparacaoListSerializer(ModelSerializer):
 
 class ReparacaoCreateSerializer(ModelSerializer):
     url = SerializerMethodField(read_only=True)
-
 
     def get_url(self, obj):
         # request
@@ -46,10 +45,11 @@ class ReparacaoCreateSerializer(ModelSerializer):
             'url',
             'id',
             'name',
+            'nome2',
             'description',
             'date_created',
             'date_completed',
-            'tlf',
+            'weight',
             'budget' ,
             'foto',
             'price',
@@ -75,10 +75,11 @@ class ReparacaoDeleteSerializer(ModelSerializer):
             'url',
             'id',
             'name',
+            'nome2',
             'description',
             'date_created',
             'date_completed',
-            'tlf',
+            'weight',
             'budget' ,
             'foto',
             'price',
@@ -103,10 +104,11 @@ class ReparacaoUpdateSerializer(ModelSerializer):
                 'url',
                 'id',
                 'name',
+                'nome2',
                 'description',
                 'date_created',
                 'date_completed',
-                'tlf',
+                'weight',
                 'budget',
                 'foto',
                 'price',
@@ -131,10 +133,11 @@ class ReparacaoDetailSerializer(ModelSerializer):
             'url',
             'id',
             'name',
+            'nome2',
             'description',
             'date_created',
             'date_completed',
-            'tlf',
+            'weight',
             'budget',
             'foto',
             'price',

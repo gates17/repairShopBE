@@ -111,8 +111,11 @@ DATABASES = {
         'PASSWORD':'bragap017',
         'PORT':'3306',
         'HOST': 'localhost',
+        'STORAGE_ENGINE': 'INNODB',
         'OPTIONS': {
-            'init_command': 'SET default_storage_engine=INNODB',
+            'init_command':
+                'SET foreign_key_checks = 0',
+
             #'read_default_file': '/home/django-backend/django_backend/tutorial/my.cnf',
         },
     }

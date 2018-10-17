@@ -5,6 +5,7 @@ from django.db import models
 from django.urls import reverse
 from rest_framework.reverse import reverse as reparacao_reverse
 from decimal import Decimal
+from cliente.models import Cliente
 
 # Create your models here.
 
@@ -12,10 +13,11 @@ from decimal import Decimal
 class Reparacao(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255, null=True, blank=True)
+    nome2 = models.ForeignKey(Cliente, default=None, on_delete=models.CASCADE)
     description = models.TextField(max_length=1024, null=True, blank=True)
     date_created = models.DateField(auto_now_add=True)
     date_completed = models.DateField(blank=True, null=True)
-    tlf = models.CharField(max_length=15, null=True, blank=True)
+    weight = models.DecimalField(max_digits=10 ,decimal_places=3, default=Decimal('0.00'))
     budget= models.DecimalField(max_digits=10 ,decimal_places=2, default=Decimal('0.00'))
     price = models.DecimalField(max_digits=10, decimal_places=2, default=Decimal('0.00'))
     materials = models.TextField(null=True, blank=True)

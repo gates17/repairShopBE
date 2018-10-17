@@ -13,7 +13,6 @@ from rest_framework import status
 from rest_framework.response import Response
 from .pagination import PostPageNumberPagination #PostLimitOffSetPagination
 
-from rest_framework.pagination import  PageNumberPagination
 
 class ReparacaoCreateView(generics.CreateAPIView):
     model = Reparacao
@@ -22,6 +21,7 @@ class ReparacaoCreateView(generics.CreateAPIView):
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
+
         if not request.data['date_completed'] or request.data['date_completed']=='':
             request.data['date_completed']=None
         if not request.data['price']:
@@ -41,7 +41,7 @@ class ReparacaoListView(generics.ListAPIView):
     pagination_class =  PostPageNumberPagination
 
     def get_queryset(self, *args, **kwargs):
-        qs = Reparacao.objects.all().filter(faturado=False)
+        qs = Reparacao.objects.all().filter(faturado=False).select_related('nome2')
         query = self.request.GET.get("q")
         dateStartQuery = self.request.GET.get("qdi")
         dateFinishQuery = self.request.GET.get("qdf")
@@ -68,7 +68,7 @@ class ReparacaoListView(generics.ListAPIView):
         if query is not None:
             qs = qs.filter(
                 Q(name__icontains=query) |
-                Q(tlf=query)
+                Q(id=query)
 
             ).distinct()
 

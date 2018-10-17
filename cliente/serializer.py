@@ -26,7 +26,7 @@ class ClienteSerializer(serializers.ModelSerializer):
     def get_url(self, obj):
         # request
         request = self.context.get("request")
-        return obj.get_cliente_url(request=request)
+        return obj.get_cliente_url(request=request) + "detail/" + str(obj.id)
 
     def validate_title(self, value):
         qs = Cliente.objects.filter(name__iexact=value)  # including instance

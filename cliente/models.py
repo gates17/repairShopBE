@@ -19,7 +19,7 @@ class Cliente(models.Model):
     total_spent_by_client = models.DecimalField(max_digits=10, decimal_places=2, default=Decimal('0.00'))
 
     def __str__(self):
-        return str(self.id)
+        return str(self.name)
 
     #blog property
     @property
