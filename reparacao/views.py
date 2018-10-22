@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from rest_framework import generics
-from .models import Reparacao
+from .models import Reparacao,Cliente
 from .serializer import *
 from django.db.models import Q
 
@@ -39,7 +39,7 @@ class ReparacaoListView(generics.ListAPIView):
     pagination_class =  PostPageNumberPagination
 
     def get_queryset(self, *args, **kwargs):
-        qs = Reparacao.objects.all().filter(faturado=False).select_related('name_id')
+        qs = Reparacao.objects.all().filter(faturado=False).select_related('name_id').order_by('id')
         query = self.request.GET.get("q")
 
         for key in self.request.GET.iterkeys():  # "for key in request.GET" works too.
@@ -75,11 +75,15 @@ class ReparacaoListView(generics.ListAPIView):
         if clientRelatedQuery:
             qs = qs.filter(name_id=clientRelatedQuery)
         if query is not None:
-            print qs.query
+            clientFilter = Cliente.objects.all().filter(name__icontains=query)
+            if clientFilter:
+                qs = qs.filter(
+                    Q(name_id__in=clientFilter)
+                ).distinct()
+                return qs.order_by('name_id')
             qs = qs.filter(
-                Q(name_id__icontains=query) |
-                Q(id=query)
-
+                Q(name_id=id)
+                | Q(id=query)
             ).distinct()
         return qs
 
