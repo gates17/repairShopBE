@@ -50,9 +50,7 @@ class ClienteSerializer(serializers.ModelSerializer):
 
 
     def get_total_debt_by_client(self,obj):
-        print "PICAS"
         qs = obj.reparacao_set.all()
         for q in qs:
             obj.total_debt_by_client += q.budget
-        print obj.total_debt_by_client
         return obj.total_debt_by_client

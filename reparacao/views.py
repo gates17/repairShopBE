@@ -28,8 +28,6 @@ class ReparacaoCreateView(generics.CreateAPIView):
             request.data['price']=0
         if not request.data['budget']:
             request.data['budget']=0
-        print "POST"
-        print request.data['faturado']
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
@@ -41,13 +39,21 @@ class ReparacaoListView(generics.ListAPIView):
     pagination_class =  PostPageNumberPagination
 
     def get_queryset(self, *args, **kwargs):
-        print "QUERYSET"
         qs = Reparacao.objects.all().filter(faturado=False).select_related('name_id')
         query = self.request.GET.get("q")
+
+        for key in self.request.GET.iterkeys():  # "for key in request.GET" works too.
+            # Add filtering logic here.
+            valuelist = self.request.GET.getlist(key)
+            if(valuelist[0] == 'asc'):
+                qs = Reparacao.objects.all().order_by(key)
+
+            if(valuelist[0] == 'desc'):
+                qs = Reparacao.objects.all().order_by(('-'+key))
+
         dateStartQuery = self.request.GET.get("qdi")
         dateFinishQuery = self.request.GET.get("qdf")
         clientRelatedQuery = self.request.GET.get("qc")
-        print dateStartQuery, dateFinishQuery,query
         if dateStartQuery:
             qs = qs.filter(
                 Q(date_created__gte=dateStartQuery)
@@ -68,18 +74,13 @@ class ReparacaoListView(generics.ListAPIView):
             ).distinct()
         if clientRelatedQuery:
             qs = qs.filter(name_id=clientRelatedQuery)
-            print qs
         if query is not None:
+            print qs.query
             qs = qs.filter(
-                Q(name__icontains=query) |
+                Q(name_id__icontains=query) |
                 Q(id=query)
 
             ).distinct()
-
-
-            # print page_list
-        #return paginator.get_paginated_response(serializer.data)
-        print qs.query
         return qs
 
 class ReparacaoUpdateView(generics.UpdateAPIView):

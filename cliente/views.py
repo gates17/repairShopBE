@@ -25,12 +25,9 @@ class ClienteListView(generics.ListAPIView):
             qs = qs.filter(
                 Q(name__icontains=query).distinct()
             )
-        # print self.get_object()
-        print dir(self)
-        print self
+
         #total_spent = self.total_debt_by_client()
         #qs.annotate(total_debt_by_client=total_spent)
-        print qs.query
         return qs
 
 class ClienteUpdateView(generics.UpdateAPIView):
