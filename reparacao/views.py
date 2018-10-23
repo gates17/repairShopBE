@@ -27,7 +27,9 @@ class ReparacaoCreateView(generics.CreateAPIView):
         if not request.data['price']:
             request.data['price']=0
         if not request.data['budget']:
-            request.data['budget']=0
+            request.data['budget'] = 0
+        if not request.data['weigth']:
+            request.data['weigth'] = 0
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
