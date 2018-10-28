@@ -44,6 +44,12 @@ class ReparacaoListView(generics.ListAPIView):
         qs = Reparacao.objects.all().filter(faturado=False).select_related('name_id').order_by('id')
         query = self.request.GET.get("q")
 
+        if('all' in self.request.GET.values()):
+            self.pagination_class = None
+            query=self.request.GET.get("qc")
+            query=qs.filter(name_id=self.request.GET.get("qc"))
+            return query
+
         for key in self.request.GET.iterkeys():  # "for key in request.GET" works too.
             # Add filtering logic here.
             valuelist = self.request.GET.getlist(key)
