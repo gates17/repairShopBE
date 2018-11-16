@@ -26,6 +26,7 @@ class ReparacaoListSerializer(ModelSerializer):
             'price',
             'materials',
             'faturado',
+            'pagamento_parcial',
             'pago'
 
         )
@@ -54,6 +55,7 @@ class ReparacaoCreateSerializer(ModelSerializer):
             'price',
             'materials',
             'faturado',
+            'pagamento_parcial',
             'pago'
 
         )
@@ -83,6 +85,7 @@ class ReparacaoDeleteSerializer(ModelSerializer):
             'price',
             'materials',
             'faturado',
+            'pagamento_parcial',
             'pago'
 
         )
@@ -111,6 +114,7 @@ class ReparacaoUpdateSerializer(ModelSerializer):
                 'price',
                 'materials',
                 'faturado',
+                'pagamento_parcial',
                 'pago'
 
 
@@ -141,6 +145,7 @@ class ReparacaoDetailSerializer(ModelSerializer):
             'price',
             'materials',
             'faturado',
+            'pagamento_parcial',
             'pago'
 
         )

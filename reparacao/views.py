@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from rest_framework import generics
 from .models import Reparacao,Cliente
+from django.core.paginator import Paginator
+
+from rest_framework import generics
 from .serializer import *
 from django.db.models import Q
 
-from django.core.paginator import Paginator
-
+from datetime import date
 
 from rest_framework import status
 from rest_framework.response import Response
@@ -30,6 +31,8 @@ class ReparacaoCreateView(generics.CreateAPIView):
             request.data['budget'] = 0
         if not request.data['weigth']:
             request.data['weigth'] = 0
+        if not request.data['pagamento_parcial']:
+            request.data['pagamento_parcial'] = 0
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
@@ -43,6 +46,7 @@ class ReparacaoListView(generics.ListAPIView):
     def get_queryset(self, *args, **kwargs):
         qs = Reparacao.objects.all().filter(faturado=False).select_related('name_id').order_by('id')
         query = self.request.GET.get("q")
+
 
         if('all' in self.request.GET.values()):
             self.pagination_class = None
@@ -82,7 +86,20 @@ class ReparacaoListView(generics.ListAPIView):
             ).distinct()
         if clientRelatedQuery:
             qs = qs.filter(name_id=clientRelatedQuery)
+
+
         if query is not None:
+            if query == 'today':
+                qs = qs.filter(
+                    #Q(date_created='2018-09-26')).distinct()
+                    Q(date_created=date.today())).distinct()
+                return qs
+            if query =='list':
+                list_string=(self.request.GET.get("qp"))
+                list_to_print= [int(s) for s in list_string.split(',')]
+                qs = qs.filter(id__in=list_to_print)
+                return qs
+
             clientFilter = Cliente.objects.all().filter(name__icontains=query)
             if clientFilter:
                 qs = qs.filter(
@@ -93,6 +110,7 @@ class ReparacaoListView(generics.ListAPIView):
                 Q(name_id=id)
                 | Q(id=query)
             ).distinct()
+
         return qs
 
 class ReparacaoUpdateView(generics.UpdateAPIView):
