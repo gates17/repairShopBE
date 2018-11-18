@@ -99,6 +99,15 @@ class ReparacaoListView(generics.ListAPIView):
                 list_to_print= [int(s) for s in list_string.split(',')]
                 qs = qs.filter(id__in=list_to_print)
                 return qs
+            if query =='day':
+                data=self.request.GET.get("qd")
+                if data=='null':
+                    data=None
+                if data:
+                    qs = qs.filter(date_created=data).distinct()
+                else:
+                    qs = qs.filter(Q(date_created=date.today())).distinct()
+                return qs
 
             clientFilter = Cliente.objects.all().filter(name__icontains=query)
             if clientFilter:
