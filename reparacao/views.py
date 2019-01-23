@@ -3,6 +3,8 @@ from __future__ import unicode_literals
 
 from .models import Reparacao,Cliente
 from django.core.paginator import Paginator
+import sys, os
+from decimal import Decimal
 
 from rest_framework import generics
 from .serializer import *
@@ -13,6 +15,7 @@ from datetime import date
 from rest_framework import status
 from rest_framework.response import Response
 from .pagination import PostPageNumberPagination #PostLimitOffSetPagination
+from .calc_rules import calc_total
 
 
 class ReparacaoCreateView(generics.CreateAPIView):
@@ -22,7 +25,9 @@ class ReparacaoCreateView(generics.CreateAPIView):
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
+        request.data['total_to_pay'] = calc_total(request.data)
 
+        print(request.data)
         if not request.data['date_completed'] or request.data['date_completed']=='':
             request.data['date_completed']=None
         if not request.data['price']:
@@ -33,6 +38,9 @@ class ReparacaoCreateView(generics.CreateAPIView):
             request.data['weigth'] = 0
         if not request.data['pagamento_parcial']:
             request.data['pagamento_parcial'] = 0
+        if not request.data['discount']:
+            request.data['discount'] = 0
+        serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
@@ -95,7 +103,10 @@ class ReparacaoListView(generics.ListAPIView):
                     Q(date_created=date.today())).distinct()
                 return qs
             if query =='list':
+                print(self.pagination_class)
                 list_string=(self.request.GET.get("qp"))
+                if list_string:
+                    self.pagination_class=None
                 list_to_print= [int(s) for s in list_string.split(',')]
                 qs = qs.filter(id__in=list_to_print)
                 return qs
@@ -126,7 +137,33 @@ class ReparacaoUpdateView(generics.UpdateAPIView):
     lookup_field = 'id'
     serializer_class = ReparacaoUpdateSerializer
 
+    '''self
+    'allowed_methods', 'args', 'as_view', 'authentication_classes', 'check_object_permissions', 'check_permissions', 
+    'check_throttles', 'content_negotiation_class', 'default_response_headers', 'determine_version', 'dispatch', 
+    'filter_backends', 'filter_queryset', 'finalize_response', 'format_kwarg', 'get_authenticate_header', 'get_authenticators', 
+    'get_content_negotiator', 'get_exception_handler', 'get_exception_handler_context', 'get_format_suffix', 'get_object', 
+    'get_paginated_response', 'get_parser_context', 'get_parsers', 'get_permissions', 'get_queryset', 'get_renderer_context', 
+    'get_renderers', 'get_serializer', 'get_serializer_class', 'get_serializer_context', 'get_throttles', '
+    get_view_description', 'get_view_name', 'handle_exception', 'headers', 'http_method_names', 'http_method_not_allowed', 
+    'initial', 'initialize_request', 'kwargs', 'lookup_field', 'lookup_url_kwarg', 'metadata_class', 'options', 
+    'paginate_queryset', 'pagination_class', 'paginator', 'parser_classes', 'partial_update', 'patch', 'perform_authentication',
+    'perform_content_negotiation', 'perform_update', 'permission_classes', 'permission_denied', 'put', 'queryset', 
+    'raise_uncaught_exception', 'renderer_classes', 'request', 'schema', 'serializer_class', 'settings', 'throttle_classes', 
+    'throttled', 'update', 'versioning_class'
+    '''
+
     def get_queryset(self):
+        try:
+            if(self.request.data):
+                self.request.data['total_to_pay'] = calc_total(self.request.data)
+                serializer = self.get_serializer(data=self.request.data)
+                serializer.is_valid(raise_exception=True)
+                self.perform_update(serializer)
+        except Exception as e:
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+            print(exc_type, fname, exc_tb.tb_lineno)
+
         qs = Reparacao.objects.all().select_related('name_id');
         query = self.request.GET.get("q")
         if query is not None:

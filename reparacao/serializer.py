@@ -2,7 +2,6 @@ from rest_framework.serializers import ModelSerializer,SerializerMethodField,Slu
 
 from .models import Reparacao, Cliente
 
-
 class ReparacaoListSerializer(ModelSerializer):
     url = SerializerMethodField(read_only=True)
     name_id = SlugRelatedField(read_only=True,slug_field="name" )
@@ -27,7 +26,12 @@ class ReparacaoListSerializer(ModelSerializer):
             'materials',
             'faturado',
             'pagamento_parcial',
-            'pago'
+            'pago',
+            'discount',
+            'quantity',
+            'units',
+            'tax',
+            'total_to_pay'
 
         )
         read_only_fields = ['id','date_created']
@@ -56,7 +60,12 @@ class ReparacaoCreateSerializer(ModelSerializer):
             'materials',
             'faturado',
             'pagamento_parcial',
-            'pago'
+            'pago',
+            'discount',
+            'quantity',
+            'units',
+            'tax',
+            'total_to_pay'
 
         )
         read_only_fields = ['id,','date_created']
@@ -86,40 +95,52 @@ class ReparacaoDeleteSerializer(ModelSerializer):
             'materials',
             'faturado',
             'pagamento_parcial',
-            'pago'
+            'pago',
+            'discount',
+            'quantity',
+            'units',
+            'tax',
+            'total_to_pay'
 
         )
         read_only_fields = ['id','date_created']
 
 class ReparacaoUpdateSerializer(ModelSerializer):
-        url = SerializerMethodField(read_only=True)
+    url = SerializerMethodField(read_only=True)
 
-        def get_url(self, obj):
-            # request
-            request = self.context.get("request")
-            return obj.get_reparacao_url(request=request) + "detail/" + str(obj.id)
-
-        class Meta:
-            model = Reparacao
-            fields = (
-                'url',
-                'id',
-                'name_id',
-                'description',
-                'date_created',
-                'date_completed',
-                'weight',
-                'budget',
-                'foto',
-                'price',
-                'materials',
-                'faturado',
-                'pagamento_parcial',
-                'pago'
+    def get_url(self, obj):
+        # request
+        request = self.context.get("request")
+        return obj.get_reparacao_url(request=request) + "detail/" + str(obj.id)
 
 
-            )
-            read_only_fields = ['id', 'date_created']
+
+    class Meta:
+        model = Reparacao
+        fields = (
+            'url',
+            'id',
+            'name_id',
+            'description',
+            'date_created',
+            'date_completed',
+            'weight',
+            'budget',
+            'foto',
+            'price',
+            'materials',
+            'faturado',
+            'pagamento_parcial',
+            'pago',
+            'discount',
+            'quantity',
+            'units',
+            'tax',
+            'total_to_pay'
+
+
+        )
+        read_only_fields = ['id', 'date_created']
 
 class ReparacaoDetailSerializer(ModelSerializer):
     url = SerializerMethodField(read_only=True)
@@ -146,7 +167,12 @@ class ReparacaoDetailSerializer(ModelSerializer):
             'materials',
             'faturado',
             'pagamento_parcial',
-            'pago'
+            'pago',
+            'discount',
+            'quantity',
+            'units',
+            'tax',
+            'total_to_pay'
 
         )
         read_only_fields = ['id', 'date_created']
