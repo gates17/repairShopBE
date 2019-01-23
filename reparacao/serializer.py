@@ -31,7 +31,9 @@ class ReparacaoListSerializer(ModelSerializer):
             'quantity',
             'units',
             'tax',
-            'total_to_pay'
+            'tax_to_pay',
+            'total_to_pay',
+            'total_to_pay_with_tax'
 
         )
         read_only_fields = ['id','date_created']
@@ -65,7 +67,9 @@ class ReparacaoCreateSerializer(ModelSerializer):
             'quantity',
             'units',
             'tax',
-            'total_to_pay'
+            'tax_to_pay',
+            'total_to_pay',
+            'total_to_pay_with_tax'
 
         )
         read_only_fields = ['id,','date_created']
@@ -136,7 +140,9 @@ class ReparacaoUpdateSerializer(ModelSerializer):
             'quantity',
             'units',
             'tax',
-            'total_to_pay'
+            'tax_to_pay',
+            'total_to_pay',
+            'total_to_pay_with_tax'
 
 
         )
@@ -172,7 +178,8 @@ class ReparacaoDetailSerializer(ModelSerializer):
             'quantity',
             'units',
             'tax',
-            'total_to_pay'
-
+            'tax_to_pay',
+            'total_to_pay',
+            'total_to_pay_with_tax'
         )
         read_only_fields = ['id', 'date_created']

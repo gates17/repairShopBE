@@ -25,8 +25,11 @@ class ReparacaoCreateView(generics.CreateAPIView):
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
-        request.data['total_to_pay'] = calc_total(request.data)
-
+        total_dict = {}
+        total_dict = calc_total(self.request.data)
+        request.data['total_to_pay'] = total_dict['total_to_pay']
+        request.data['total_to_pay_with_tax'] = total_dict['total_to_pay_with_tax']
+        request.data['tax_to_pay'] = total_dict['tax_to_pay']
         print(request.data)
         if not request.data['date_completed'] or request.data['date_completed']=='':
             request.data['date_completed']=None
@@ -155,7 +158,16 @@ class ReparacaoUpdateView(generics.UpdateAPIView):
     def get_queryset(self):
         try:
             if(self.request.data):
-                self.request.data['total_to_pay'] = calc_total(self.request.data)
+                total_dict ={}
+                total_dict= calc_total(self.request.data)
+                print(total_dict)
+                print(self.request.data['tax'])
+                self.request.data['total_to_pay']=total_dict['total_to_pay']
+                self.request.data['total_to_pay_with_tax']=total_dict['total_to_pay_with_tax']
+                self.request.data['tax_to_pay']=total_dict['tax_to_pay']
+                print(total_dict['total_to_pay'])
+                print(total_dict['total_to_pay_with_tax'])
+                print(total_dict['tax_to_pay'])
                 serializer = self.get_serializer(data=self.request.data)
                 serializer.is_valid(raise_exception=True)
                 self.perform_update(serializer)

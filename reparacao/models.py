@@ -27,6 +27,9 @@ class Reparacao(models.Model):
     units=models.IntegerField(default=Decimal('1'))
     tax=models.IntegerField(default=Decimal('23'))
     total_to_pay=models.DecimalField(max_digits=10, decimal_places=2, default=Decimal('0.00'))
+    total_to_pay_with_tax=models.DecimalField(max_digits=10, decimal_places=2, default=Decimal('0.00'))
+    tax_to_pay=models.DecimalField(max_digits=10, decimal_places=2, default=Decimal('0.00'))
+
     faturado= models.BooleanField(default=False)
     foto = models.CharField(max_length=255,blank=True, null=True)
     #foto = models.ImageField(upload_to='images/', blank=True, null=True)
