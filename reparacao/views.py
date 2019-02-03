@@ -140,21 +140,6 @@ class ReparacaoUpdateView(generics.UpdateAPIView):
     lookup_field = 'id'
     serializer_class = ReparacaoUpdateSerializer
 
-    '''self
-    'allowed_methods', 'args', 'as_view', 'authentication_classes', 'check_object_permissions', 'check_permissions', 
-    'check_throttles', 'content_negotiation_class', 'default_response_headers', 'determine_version', 'dispatch', 
-    'filter_backends', 'filter_queryset', 'finalize_response', 'format_kwarg', 'get_authenticate_header', 'get_authenticators', 
-    'get_content_negotiator', 'get_exception_handler', 'get_exception_handler_context', 'get_format_suffix', 'get_object', 
-    'get_paginated_response', 'get_parser_context', 'get_parsers', 'get_permissions', 'get_queryset', 'get_renderer_context', 
-    'get_renderers', 'get_serializer', 'get_serializer_class', 'get_serializer_context', 'get_throttles', '
-    get_view_description', 'get_view_name', 'handle_exception', 'headers', 'http_method_names', 'http_method_not_allowed', 
-    'initial', 'initialize_request', 'kwargs', 'lookup_field', 'lookup_url_kwarg', 'metadata_class', 'options', 
-    'paginate_queryset', 'pagination_class', 'paginator', 'parser_classes', 'partial_update', 'patch', 'perform_authentication',
-    'perform_content_negotiation', 'perform_update', 'permission_classes', 'permission_denied', 'put', 'queryset', 
-    'raise_uncaught_exception', 'renderer_classes', 'request', 'schema', 'serializer_class', 'settings', 'throttle_classes', 
-    'throttled', 'update', 'versioning_class'
-    '''
-
     def get_queryset(self):
         try:
             if(self.request.data):
